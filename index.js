@@ -79,3 +79,29 @@ app.put("/admin/:ID_Package", function (req, res) {
   console.log(paqueteAModificar);
   return res.json(paqueteAModificar);
 });
+
+app.delete("/admin/:ID_Package", function (req, res) {
+  let indexPaquete = Paquetes.findIndex(
+    (element) => element.ID == req.params.ID_Package
+  );
+  let respuesta;
+  if (indexPaquete == -1) {
+    console.log(Paquetes);
+    respuesta = {
+      error: true,
+      codigo: 501,
+      mensaje: "El pais no ha sido creado",
+    };
+  } else {
+    //Si hay un pais creado, lo eliminamos
+    Paquetes.splice(indexPaquete, 1);
+    respuesta = {
+      error: false,
+      codigo: 200,
+      mensaje: "pais eliminado",
+    };
+  }
+  //Imrpimimos respuesta
+  console.log(Paquetes);
+  res.send(respuesta);
+});
