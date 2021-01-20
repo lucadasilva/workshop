@@ -1,0 +1,65 @@
+array de paquetes
+
+Paquetes:[]
+
+ID
+Nombre
+IMG
+PRECIO
+
+
+array de usuarios
+
+usuarios
+
+ID
+Nombre y apellido
+
+
+array de Suscripciones (Relacion usuario-paquete)
+
+Id usuario
+Id Paquete
+
+/registro:
+    /post{
+        Nombre y apellido
+    }
+
+/administrador:
+    /post{
+        Nombre
+        IMG
+        PRECIO
+    }
+    /get{
+        array de Suscripciones (Relacion usuario-paquete)
+    }
+    /put{
+        Paquetes:[]
+
+        Nombre
+        IMG
+        PRECIO
+    }
+    /delete{
+        Paquetes:[]
+
+        ID
+    }
+
+/home:
+    /get{
+        Paquetes:[]
+
+        Nombre
+        IMG
+        PRECIO
+    }
+    /post{
+        array de Suscripciones (Relacion usuario-paquete)
+        Id usuario
+        Id Paquete
+    }
+
+    
