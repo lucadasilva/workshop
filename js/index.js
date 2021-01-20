@@ -52,7 +52,8 @@ class Suscription {
 app.post("/registro", function (req, res) {
   const user = new User(Usuarios.length, req.body.Nombre, req.body.Apellido);
   Usuarios.push(user);
-  res.send("User Created");
+  // res.send me envie el id del usuario para recibirlo en postUsuario de registro.js
+  res.send({ message: "User Created", userID: user.ID });
 });
 
 // HOME
