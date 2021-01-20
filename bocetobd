@@ -35,7 +35,7 @@ Id Paquete
     /get{
         array de Suscripciones (Relacion usuario-paquete)
     }
-    /put{
+    /put?${ID}{
         Paquetes:[]
 
         Nombre
@@ -62,4 +62,3 @@ Id Paquete
         Id Paquete
     }
 
-    
