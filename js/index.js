@@ -4,6 +4,12 @@ const app = express();
 
 const cors = require("cors");
 
+const conn = require("./conexion");
+
+const User = require("./user");
+const Package = require("./package");
+const Suscription = require("./suscription");
+
 app.use(express.json());
 
 app.listen(3000, () => {
@@ -11,45 +17,45 @@ app.listen(3000, () => {
 });
 
 app.use(cors());
-var Usuarios = [];
+// var Usuarios = [];
 
-var Suscripciones = [];
+// var Suscripciones = [];
 
-var Paquetes = [
-  {
-    ID: 0,
-    Nombre: "Cordoba",
-    Img:
-      "https://images.unsplash.com/photo-1560654584-44c1c15fa953?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-    Precio: 10000,
-    Descripcion: "7 Noches c/desayuno",
-  },
-];
+// var Paquetes = [
+//   {
+//     ID: 0,
+//     Nombre: "Cordoba",
+//     Img:
+//       "https://images.unsplash.com/photo-1560654584-44c1c15fa953?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+//     Precio: 10000,
+//     Descripcion: "7 Noches c/desayuno",
+//   },
+// ];
 
-class User {
-  constructor(ID, Nombre, Apellido) {
-    this.ID = ID;
-    this.Nombre = Nombre;
-    this.Apellido = Apellido;
-  }
-}
+// class User {
+//   constructor(ID, Nombre, Apellido) {
+//     this.ID = ID;
+//     this.Nombre = Nombre;
+//     this.Apellido = Apellido;
+//   }
+// }
 
-class Package {
-  constructor(ID, Nombre, Img, Precio, Descripcion) {
-    this.ID = ID;
-    this.Nombre = Nombre;
-    this.Img = Img;
-    this.Precio = Precio;
-    this.Descripcion = Descripcion;
-  }
-}
-class Suscription {
-  constructor(ID, user, paquete) {
-    this.ID = ID;
-    this.user = user;
-    this.paquete = paquete;
-  }
-}
+// class Package {
+//   constructor( ) {
+//     this.ID = ID;
+//     this.Nombre = Nombre;
+//     this.Img = Img;
+//     this.Precio = Precio;
+//     this.Descripcion = Descripcion;
+//   }
+// }
+// class Suscription {
+//   constructor(ID, user, paquete) {
+//     this.ID = ID;
+//     this.user = user;
+//     this.paquete = paquete;
+//   }
+// }
 // REGISTRO
 
 app.post("/registro", function (req, res) {
@@ -62,7 +68,11 @@ app.post("/registro", function (req, res) {
 // HOME
 
 app.get("/home", function (req, res) {
-  res.send(Paquetes);
+  let paquetes;
+  Package.findAll().then((respuesta) =>
+    respuesta ? (paquetes = respuesta) : ""
+  );
+  res.send(paquetes);
 });
 
 app.post("/home", function (req, res) {
