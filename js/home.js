@@ -50,29 +50,16 @@ let displayProducts = (products) => {
   }
 };
 
-/*async function getProducts() 
-{
-  let response = await fetch(`localhost/3000/`);
-  let data = await response.json()
-  return data;
-}*/
-
 async function getProducts() {
   let response = await fetch("http://localhost:3000/home");
   console.log(response);
   let data = await response.json();
   console.log(data);
 
-  //   let data = await (
-  //     await fetch("http://localhost:3000/home", {
-  //       method: "GET",
-  //       mode: "no-cors",
-  //     })
-  //   ).json();
   return data;
 }
 
-async function postComprar(package) {
+async function postComprar(paquete) {
   let request = await fetch("http://localhost:3000/home", {
     method: "POST",
     headers: new Headers({
@@ -82,7 +69,7 @@ async function postComprar(package) {
     body: JSON.stringify({
       // user deberia tomar el valor de userID del sessionStorage
       user: "yo",
-      package: `${package.ID}`,
+      package: `${paquete.ID}`,
     }),
   });
   console.log(request);
