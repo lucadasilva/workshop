@@ -68,23 +68,26 @@ app.post("/registro", function (req, res) {
 // HOME
 
 app.get("/home", function (req, res) {
-  let paquetes;
-  Package.findAll().then((respuesta) =>
-    respuesta ? (paquetes = respuesta) : ""
-  );
-  res.send(paquetes);
+  Package.findAll(
+    {
+      raw: true
+    }
+  ).then((respuesta) =>{
+    console.log(respuesta);
+    res.send(respuesta ? (respuesta) : "not found") 
+  }
+    ).catch(res.send("ha ocurrido un error"));
 });
 
-app.post("/home", function (req, res) {
-  const newSuscripcion = new Suscription(
-    Suscripciones.length,
-    req.body.user,
-    req.body.package
-  );
+/*app.post("/home", function (req, res) {
+  Suscription.create({
+    package_id = req.body.package_id,
+    user_id = req.body.user_id
+  },).then((respuesta)=>{console.log("suscripcion creada `{respuesta.id}");})
   Suscripciones.push(newSuscripcion);
   console.log(newSuscripcion);
   res.send("Suscription Successful");
-});
+});*/
 
 // ADMIN
 

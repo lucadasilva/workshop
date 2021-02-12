@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const path = "tutti";
+const path = "workshop";
 
 const conn = new Sequelize(path, "root", "", {
   host: "localhost",
@@ -12,8 +12,5 @@ conn
   })
   .catch((err) => {
     console.error("Error de conexion:", err);
-  })
-  .finally(() => {
-    conn.close();
   });
 module.exports = conn;

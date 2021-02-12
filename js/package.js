@@ -4,7 +4,7 @@ const Sequelize = require("sequelize");
 const Package = conn.define(
   "packages",
   {
-    id: {
+    id_package: {
       type: Sequelize.DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,

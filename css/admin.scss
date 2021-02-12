@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin: 10px;
+}
+.usuario {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.user-card {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  .paquete {
+    display: flex;
+    border: 1px solid black;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 1000px;
+    .imagen {
+      height: 100px;
+      width: 100px;
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+    .ciudad {
+      display: flex;
+      border-left: 1px solid black;
+      height: 100px;
+      width: 300px;
+      justify-content: center;
+      align-items: center;
+      margin-right: 20px;
+    }
+    .precio {
+      border-left: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      width: 150px;
+      margin-right: 20px;
+    }
+    input {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+  }
+}
